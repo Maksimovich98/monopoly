@@ -1,11 +1,13 @@
+[id*="cell"][id$="name"] {
+  display: none !important;
+}
 body {
   margin: 0;
   padding: 0;
   min-width: 1075px;
-  background: #ffffff;
+  background: #b4b3b3;
   text-align: center; /* Важно для центрирования инлайн- или блочных элементов, если они идут в потоке */
 }
-
 
 td {
   font-size: 12px;
@@ -20,9 +22,10 @@ td {
 }
 #container {
   max-width: 926px; /* или любая ширина, подходящая для вашего дизайна */
-  margin: 0 auto;    /* автоотступы по бокам для центровки */
+  margin: 0 auto; /* автоотступы по бокам для центровки */
   text-align: center; /* если требуется центрировать содержимое */
   padding: 10px; /* по желанию */
+  position: relative;
 }
 #moneybar {
   float: right;
@@ -30,6 +33,7 @@ td {
   background-color: white;
   margin: 15px;
   border-radius: 5px;
+  left: 1.6cm;
   display: none;
   z-index: 14;
   position: relative;
@@ -37,7 +41,6 @@ td {
   -webkit-user-select: none;
   user-select: none;
 }
-
 
 #moneybar table {
   font-weight: bold;
@@ -73,13 +76,11 @@ td {
 
 #board {
   display: block;
-  border: 2px solid black;
-  margin: 5px auto; /* сохраняем auto для центрирования */
-  /* float: left;    удаляем или закомментируем */
+  z-index: 1;
+  margin: 5px auto;
   background: url("images/map.png") no-repeat center center;
   background-size: cover;
 }
-
 
 #jail {
   border: 1px solid black;
@@ -95,13 +96,12 @@ td {
   position: absolute;
   z-index: 9;
   top: 250px;
-  left: 250px;
+  left: 0cm;
   border: 2px solid black;
   padding: 10px;
   display: none;
   background-color: white;
 }
-
 
 #quickstats {
   font-size: 12px;
@@ -195,8 +195,8 @@ td {
 }
 
 #trade {
-  border: 2px solid black;
   display: none;
+  border: 2px solid black;
   width: 630px;
   margin: 15px auto;
   background-color: white;

@@ -1,3 +1,4 @@
+
 function Game() {
   var die1;
   var die2;
@@ -971,7 +972,7 @@ function Game() {
       initiator.communityChestJailCard = true;
       recipient.communityChestJailCard = false;
       addAlert(
-        initiатор.name +
+        initiator.name +
           ' получил карту "Выход из тюрьмы" от ' +
           recipient.name +
           "."
@@ -979,19 +980,19 @@ function Game() {
     }
 
     if (tradeObj.getChanceJailCard() === 1) {
-      initiатор.chanceJailCard = false;
+      initiator.chanceJailCard = false;
       recipient.chanceJailCard = true;
       addAlert(
         recipient.name +
           ' получил карту "Выход из тюрьмы" от ' +
-          initiатор.name +
+          initiator.name +
           "."
       );
     } else if (tradeObj.getChanceJailCard() === -1) {
-      initiатор.chanceJailCard = true;
+      initiator.chanceJailCard = true;
       recipient.chanceJailCard = false;
       addAlert(
-        initiатор.name +
+        initiator.name +
           ' получил карту "Выход из тюрьмы" от ' +
           recipient.name +
           "."
@@ -1000,20 +1001,17 @@ function Game() {
 
     // Exchange money.
     if (money > 0) {
-      initиатор.pay(money, recipient.index);
+      initiator.pay(money, recipient.index);
       recipient.money += money;
-
       addAlert(
-        recipient.name + " получил $" + money + " от " + initiатор.name + "."
+        recipient.name + " получил $" + money + " от " + initiator.name + "."
       );
     } else if (money < 0) {
       money = -money;
-
-      recipient.pay(money, initiатор.index);
-      initиатор.money += money;
-
+      recipient.pay(money, initiator.index);
+      initiator.money += money;
       addAlert(
-        initiатор.name + " получил $" + money + " от " + recipient.name + "."
+        initiator.name + " получил $" + money + " от " + recipient.name + "."
       );
     }
 
@@ -1053,7 +1051,7 @@ function Game() {
 
     if (money > 0 && money > initiator.money) {
       document.getElementById("trade-leftp-money").value =
-        initiатор.name + " не имеет $" + money + ".";
+      initiator.name + " не имеет $" + money + ".";
       document.getElementById("trade-leftp-money").style.color = "red";
       return false;
     } else if (money < 0 && -money > recipient.money) {
@@ -1112,7 +1110,7 @@ function Game() {
       addAlert(initiator.name + " инициировал обмен с " + recipient.name + ".");
       popup(
         "<p>" +
-          initiатор.name +
+        initiator.name +
           " предложил обмен с вами, " +
           recipient.name +
           ". Вы можете принять, отклонить или изменить предложение.</p>"
@@ -1508,9 +1506,17 @@ function popup(HTML, action, option) {
     // Ok
   } else if (option === "") {
     $("#popuptext").append(
-      "<div><input type='button' value='OK' id='popupclose' /></div>"
+      "<div><input type='button' value='OK' id='popupok' /></div>"
     );
-    $("#popupclose").focus();
+    $("#popupok").focus();
+    // Добавляем обработчик клика для кнопки OK
+$("#popupok").click(function() {
+  $("#popupwrap").hide();
+  $("#popupbackground").fadeOut(400);
+  if (typeof action === 'function') {
+    action();
+  }
+});
 
     $("#popupclose")
       .on("click", function () {
