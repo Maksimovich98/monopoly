@@ -1,8 +1,11 @@
 body {
-  background: #ffffff;
-  margin: 0px;
+  margin: 0;
+  padding: 0;
   min-width: 1075px;
+  background: #ffffff;
+  text-align: center; /* Важно для центрирования инлайн- или блочных элементов, если они идут в потоке */
 }
+
 
 td {
   font-size: 12px;
@@ -15,7 +18,12 @@ td {
   display: none;
   margin: 15px;
 }
-
+#container {
+  max-width: 926px; /* или любая ширина, подходящая для вашего дизайна */
+  margin: 0 auto;    /* автоотступы по бокам для центровки */
+  text-align: center; /* если требуется центрировать содержимое */
+  padding: 10px; /* по желанию */
+}
 #moneybar {
   float: right;
   border: 0px solid black;
@@ -29,6 +37,7 @@ td {
   -webkit-user-select: none;
   user-select: none;
 }
+
 
 #moneybar table {
   font-weight: bold;
@@ -63,12 +72,14 @@ td {
 }
 
 #board {
-  display: none;
+  display: block;
   border: 2px solid black;
-  border-spacing: 3px;
-  margin: 25px;
-  float: left;
+  margin: 5px auto; /* сохраняем auto для центрирования */
+  /* float: left;    удаляем или закомментируем */
+  background: url("images/map.png") no-repeat center center;
+  background-size: cover;
 }
+
 
 #jail {
   border: 1px solid black;
@@ -90,6 +101,7 @@ td {
   display: none;
   background-color: white;
 }
+
 
 #quickstats {
   font-size: 12px;
@@ -808,7 +820,7 @@ td {
 }
 
 /* Images for cards */
-#cell0 {
+/* #cell0 {
   background: url('images/map/cell0.png') no-repeat center center;
   background-size: contain;
 }
@@ -967,4 +979,59 @@ td {
 #cell39 {
   background: url('images/map/cell39.png') no-repeat center center;
   background-size: contain;
+} */
+/* Изменение ширины для клеток с 10 по 20 */
+#cell10,
+#cell11,
+#cell12,
+#cell13,
+#cell14,
+#cell15,
+#cell16,
+#cell17,
+#cell18,
+#cell19,
+#cell20 {
+  width: 125px; /* подберите нужное значение, например, 90px вместо стандартных 72px или 102px */
+}
+
+/* Изменение ширины для клеток с 31 по 39 */
+#cell31,
+#cell32,
+#cell33,
+#cell34,
+#cell35,
+#cell36,
+#cell37,
+#cell38,
+#cell39 {
+  width: 125px; /* аналогично, подберите подходящее значение */
+}
+/* Изменение ширины для верхних клеток (ячейки 10-20) */
+#cell0,
+#cell1,
+#cell2,
+#cell3,
+#cell4,
+#cell5,
+#cell6,
+#cell7,
+#cell8,
+#cell9,
+#cell10 {
+  height: 120px; /* Подберите нужное значение */
+}
+
+/* Изменение ширины для нижних клеток (ячейки 31-39) */
+
+#cell21,
+#cell22,
+#cell23,
+#cell24,
+#cell25,
+#cell26,
+#cell27,
+#cell28,
+#cell29 {
+  height: 120px; /* Подберите нужное значение */
 }
